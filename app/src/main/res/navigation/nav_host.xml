@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_host"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="uz.itschool.todoplanner.ui.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_bodyFragment"
+            app:destination="@id/bodyFragment"
+            app:enterAnim="@anim/appear_fast_alpha"
+            app:popUpTo="@id/nav_host" />
+    </fragment>
+    <fragment
+        android:id="@+id/bodyFragment"
+        android:name="uz.itschool.todoplanner.BodyFragment"
+        android:label="fragment_body"
+        tools:layout="@layout/fragment_body" />
+</navigation>
