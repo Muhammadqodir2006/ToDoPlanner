@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import uz.itschool.todoplanner.databinding.FragmentBodyBinding
 import uz.itschool.todoplanner.ui.CalendarFragment
-import uz.itschool.todoplanner.ui.HomeFragment
+import uz.itschool.todoplanner.ui.TasksFragment
 import uz.itschool.todoplanner.ui.ProfileFragment
 import uz.itschool.todoplanner.ui.TimerFragment
 
@@ -19,11 +19,11 @@ class BodyFragment : Fragment() {
     ): View {
         binding = FragmentBodyBinding.inflate(inflater, container, false)
         parentFragmentManager.beginTransaction().apply {
-            replace(R.id.body_container, HomeFragment())
+            replace(R.id.body_container, TasksFragment())
             commit()
         }
         binding.bodyBottomNavigationView.setOnNavigationItemSelectedListener {
-            var fragment :Fragment  = HomeFragment()
+            var fragment :Fragment  = TasksFragment()
             when(it.itemId){
                 R.id.calendar -> fragment = CalendarFragment()
                 R.id.timer -> fragment = TimerFragment()
