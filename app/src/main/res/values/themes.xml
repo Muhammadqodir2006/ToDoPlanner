@@ -21,5 +21,15 @@
         <item name="android:windowSoftInputMode">adjustResize</item>
     </style>
 
+    <style name="MyButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="shapeAppearanceOverlay">@style/MyShapeAppearance</item>
+    </style>
+    <style name="MyShapeAppearance">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">16dp</item>
+        <item name="cornerSizeBottomLeft">16dp</item>
+        <item name="cornerFamilyBottomRight">0dp</item>
+        <item name="cornerFamilyTopRight">0dp</item>
+    </style>
 
 </resources>

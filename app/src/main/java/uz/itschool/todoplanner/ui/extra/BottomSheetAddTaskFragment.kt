@@ -27,10 +27,6 @@ class BottomSheetAddTaskFragment : BottomSheetDialogFragment() {
         binding.tasksAddTaskDialogEditText.requestFocus()
         setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogStyle)
 
-
-
-
-
         binding.tasksAddTaskDialogCancelBtn.setOnClickListener { dismiss()}
         return binding.root
     }
