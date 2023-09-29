@@ -10,6 +10,8 @@ data class Task (
     var state : Int = 0,
     var task : String,
     var subtasks : String,
-    var priority : Boolean,
-    var category : Boolean,
+    var priority : Int,
+    var category : Int,
+    var urgent : Boolean,
+    var important : Boolean,
 ):Serializable
