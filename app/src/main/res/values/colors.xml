@@ -10,6 +10,7 @@
     <color name="textBlack">#222222</color>
     <color name="gray">#8C8C8C</color>
     <color name="gray_50">#A8A8A8</color>
+    <color name="ripple">#E9E9E9</color>
 
 
 </resources>

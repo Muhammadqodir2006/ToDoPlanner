@@ -23,7 +23,6 @@ class BottomSheetAddTaskFragment : BottomSheetDialogFragment() {
     ): View {
         binding = FragmentBottomSheetAddTaskBinding.inflate(inflater, container, false)
 
-
         binding.tasksAddTaskDialogEditText.requestFocus()
         setStyle(DialogFragment.STYLE_NORMAL, R.style.DialogStyle)
 
