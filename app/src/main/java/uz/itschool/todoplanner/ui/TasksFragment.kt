@@ -20,13 +20,15 @@ class TasksFragment : Fragment() {
     ): View {
         binding = FragmentTasksBinding.inflate(inflater, container, false)
 
+        binding.tasksRecycler.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        binding.tasksRecycler.adapter = TasksAdapter(requireContext())
+
         binding.tasksAddBtn.setOnClickListener {
             val bottomSheetFragment = BottomSheetAddTaskFragment()
             bottomSheetFragment.show(parentFragmentManager, "BSDialogFragment")
         }
 
-        binding.tasksRecycler.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-        binding.tasksRecycler.adapter = TasksAdapter(requireContext())
+
 
 
 

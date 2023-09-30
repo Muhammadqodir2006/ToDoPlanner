@@ -15,7 +15,7 @@ import uz.itschool.todoplanner.R
 import uz.itschool.todoplanner.database.AppDatabase
 
 class TasksAdapter(context: Context) : RecyclerView.Adapter<TasksAdapter.MyHolder>() {
-    private var list = AppDatabase.getInstance(context).getTaskDao().getTasks()
+    private var list = AppDatabase.getInstance(context).getTaskDao().getUndone()
 
     class MyHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val line : CardView = itemView.findViewById(R.id.tasks_item_line_cv)
@@ -69,6 +69,6 @@ class TasksAdapter(context: Context) : RecyclerView.Adapter<TasksAdapter.MyHolde
         holder.itemView.setOnClickListener {
             // TODO: Extend on tap
         }
-
+        if (task.subtasks.isEmpty()) holder.extendIV.visibility = View.GONE
     }
 }

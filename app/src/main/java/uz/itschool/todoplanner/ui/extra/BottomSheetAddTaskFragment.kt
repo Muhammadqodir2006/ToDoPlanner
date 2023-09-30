@@ -87,9 +87,11 @@ class BottomSheetAddTaskFragment : BottomSheetDialogFragment() {
             val text = editText.text.toString()
             val subtasks = ""
             // TODO: Get and Add subtasks
-//            val task = Task(0, 0, text, subtasks, priority, category, )
+            val urgent = binding.tasksAddTaskDialogUrgentCheckbox.isChecked
+            val important = binding.tasksAddTaskDialogImportantCheckbox.isChecked
+            val task = Task(0, 0, text, subtasks, priority, category, urgent, important)
             val appDatabase = AppDatabase.getInstance(requireContext())
-//            appDatabase.getTaskDao().addTask(task)
+            appDatabase.getTaskDao().addTask(task)
             dismiss()
         }
 

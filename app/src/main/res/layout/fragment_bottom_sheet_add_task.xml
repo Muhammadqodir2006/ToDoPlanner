@@ -66,17 +66,37 @@
         </androidx.appcompat.widget.LinearLayoutCompat>
     </androidx.cardview.widget.CardView>
 
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/tasks_add_task_dialog_urgent_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:text="Urgent"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tasks_add_task_dialog_add_sub_task_btn" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/tasks_add_task_dialog_important_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:text="Importand"
+        android:layout_marginStart="16dp"
+        app:layout_constraintStart_toEndOf="@+id/tasks_add_task_dialog_urgent_checkbox"
+        app:layout_constraintTop_toTopOf="@+id/tasks_add_task_dialog_urgent_checkbox" />
+
+
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="18dp"
         android:text="Priority"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tasks_add_task_dialog_add_sub_task_btn" />
+        app:layout_constraintTop_toBottomOf="@+id/tasks_add_task_dialog_important_checkbox" />
 
     <TextView
         android:id="@+id/textView3"
@@ -137,7 +157,7 @@
             android:id="@+id/tasks_add_task_low_priority_btn"
             style="@style/LeftButton"
             android:layout_width="80dp"
-            android:layout_height="45dp"
+            android:layout_height="40dp"
             android:layout_marginStart="16dp"
             android:text="Low"
             android:textColor="@color/white"
@@ -155,7 +175,7 @@
             android:id="@+id/tasks_add_task_high_priority_btn"
             style="@style/MiddleButton"
             android:layout_width="80dp"
-            android:layout_height="45dp"
+            android:layout_height="40dp"
             android:text="High"
             android:textColor="@color/primary"
             android:textAllCaps="false"
@@ -172,7 +192,7 @@
             android:id="@+id/tasks_add_task_very_high_priority_btn"
             style="@style/RightButton"
             android:layout_width="110dp"
-            android:layout_height="45dp"
+            android:layout_height="40dp"
             android:text="Very high"
             android:textColor="@color/primary"
             android:textSize="12sp"
@@ -198,7 +218,7 @@
             android:id="@+id/tasks_add_task_personal_btn"
             style="@style/LeftButton"
             android:layout_width="90dp"
-            android:layout_height="45dp"
+            android:layout_height="40dp"
             android:layout_marginStart="16dp"
             android:text="Personal"
             android:textColor="@color/white"
@@ -216,7 +236,7 @@
             android:id="@+id/tasks_add_task_home_btn"
             style="@style/MiddleButton"
             android:layout_width="90dp"
-            android:layout_height="45dp"
+            android:layout_height="40dp"
             android:text="Home"
             android:textColor="@color/primary"
             android:textSize="12sp"
@@ -234,7 +254,7 @@
             style="@style/RightButton"
             android:textAllCaps="false"
             android:layout_width="90dp"
-            android:layout_height="45dp"
+            android:layout_height="40dp"
             android:text="Work"
             android:textColor="@color/primary"
             android:textSize="12sp"
