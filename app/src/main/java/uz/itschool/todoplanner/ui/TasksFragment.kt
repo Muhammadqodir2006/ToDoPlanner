@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import uz.itschool.todoplanner.R
 import uz.itschool.todoplanner.adapter.TasksAdapter
+import uz.itschool.todoplanner.database.entity.Task
 import uz.itschool.todoplanner.databinding.FragmentTasksBinding
 import uz.itschool.todoplanner.ui.extra.BottomSheetAddTaskFragment
 
@@ -19,12 +20,18 @@ class TasksFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentTasksBinding.inflate(inflater, container, false)
+        val tasksAdapter = TasksAdapter(requireContext())
 
         binding.tasksRecycler.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-        binding.tasksRecycler.adapter = TasksAdapter(requireContext())
+        binding.tasksRecycler.adapter = tasksAdapter
 
         binding.tasksAddBtn.setOnClickListener {
-            val bottomSheetFragment = BottomSheetAddTaskFragment()
+            val bottomSheetFragment = BottomSheetAddTaskFragment(object : BottomSheetAddTaskFragment.AddTaskBottomSheetInterface{
+                override fun onAdd(task: Task) {
+                    tasksAdapter.list.add(task)
+                    tasksAdapter.notifyItemInserted(tasksAdapter.list.size-1)
+                }
+            })
             bottomSheetFragment.show(parentFragmentManager, "BSDialogFragment")
         }
 

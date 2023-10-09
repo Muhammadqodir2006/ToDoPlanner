@@ -16,7 +16,7 @@ import uz.itschool.todoplanner.databinding.FragmentBottomSheetAddTaskBinding
 
 private const val ARG_PARAM1 = "task"
 
-class BottomSheetAddTaskFragment : BottomSheetDialogFragment() {
+class BottomSheetAddTaskFragment(val addTaskBottomSheetInterface: AddTaskBottomSheetInterface) : BottomSheetDialogFragment() {
 
     private var task: Task? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,8 +28,8 @@ class BottomSheetAddTaskFragment : BottomSheetDialogFragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance(task: Task) =
-            BottomSheetAddTaskFragment().apply {
+        fun newInstance(task: Task, addTaskBottomSheetInterface: AddTaskBottomSheetInterface) =
+            BottomSheetAddTaskFragment(addTaskBottomSheetInterface).apply {
                 arguments = Bundle().apply {
                     putSerializable(ARG_PARAM1, task)
                 }
@@ -93,6 +93,7 @@ class BottomSheetAddTaskFragment : BottomSheetDialogFragment() {
             val appDatabase = AppDatabase.getInstance(requireContext())
             appDatabase.getTaskDao().addTask(task)
             dismiss()
+            addTaskBottomSheetInterface.onAdd(task)
         }
 
         return binding.root
@@ -150,6 +151,10 @@ class BottomSheetAddTaskFragment : BottomSheetDialogFragment() {
     private fun setUnselected(btn: MaterialButton) {
         btn.setBackgroundColor(requireContext().getColor(R.color.white))
         btn.setTextColor(requireContext().getColor(R.color.primary))
+    }
+
+    interface AddTaskBottomSheetInterface{
+        fun onAdd(task: Task)
     }
 
 

@@ -15,13 +15,12 @@ import uz.itschool.todoplanner.R
 import uz.itschool.todoplanner.database.AppDatabase
 
 class TasksAdapter(context: Context) : RecyclerView.Adapter<TasksAdapter.MyHolder>() {
-    private var list = AppDatabase.getInstance(context).getTaskDao().getUndone()
+    val list = AppDatabase.getInstance(context).getTaskDao().getUndone().toMutableList()
 
     class MyHolder(itemView: View): RecyclerView.ViewHolder(itemView){
         val line : CardView = itemView.findViewById(R.id.tasks_item_line_cv)
         val taskText : TextView = itemView.findViewById(R.id.tasks_item_text)
         val checkBTN : MaterialButton = itemView.findViewById(R.id.tasks_item_check_mbtn)
-        val coloredCircle : MaterialCardView = itemView.findViewById(R.id.tasks_item_colored_circle_mcv)
         val categoryTV : TextView = itemView.findViewById(R.id.tasks_item_category_text)
         val urgentIV : ImageView = itemView.findViewById(R.id.tasks_item_urgent_iv)
         val importantIV : ImageView = itemView.findViewById(R.id.tasks_item_important_iv)
@@ -29,6 +28,7 @@ class TasksAdapter(context: Context) : RecyclerView.Adapter<TasksAdapter.MyHolde
         val priorityParent : MaterialCardView = itemView.findViewById(R.id.tasks_item_priority_parent_mcv)
         val editCIV : CircleImageView = itemView.findViewById(R.id.tasks_item_edit_civ)
         val extendIV : ImageView = itemView.findViewById(R.id.tasks_item_extend_iv)
+        val categoryCircle : MaterialCardView = itemView.findViewById(R.id.tasks_item_colored_circle_mcv)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyHolder {
@@ -47,10 +47,13 @@ class TasksAdapter(context: Context) : RecyclerView.Adapter<TasksAdapter.MyHolde
             // TODO: set listener
         }
         // TODO: set
-        holder.coloredCircle.cardBackgroundColor
         if (task.category != 0){
             var category = "Home"
-            if (task.category == 2) category = "Work"
+            holder.categoryCircle.setCardBackgroundColor(R.color.green_50)
+            if (task.category == 2) {
+                category = "Work"
+                holder.categoryCircle.setCardBackgroundColor(R.color.blue_50)
+            }
             holder.categoryTV.text = category
         }
         if (!task.urgent) holder.urgentIV.visibility = View.GONE
